@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -26,124 +26,131 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="lbAutor" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="cxAutor" min="-2" pref="157" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                      <Component id="lbEditora" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cxEditora" min="-2" pref="137" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="37" max="32767" attributes="0"/>
+                      <Component id="btVoltar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
+                      <Component id="lbTitulo" min="-2" pref="201" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="336" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="lbAutor" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="cxAutor" min="-2" pref="157" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                              <Component id="lbEditora" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cxEditora" min="-2" pref="137" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lbPrateleira" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lbSecao" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lbPrateleira" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lbSecao" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="cxPrateleira" min="-2" pref="63" max="-2" attributes="0"/>
+                                                  <Component id="cxSecao" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="lbNome" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="cxNome" min="-2" pref="242" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="lbCodigo" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                              <Component id="cxCodigo" min="-2" pref="90" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="cxSecao" min="-2" pref="58" max="-2" attributes="0"/>
-                                          <Component id="cxPrateleira" min="-2" pref="63" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="lbNome" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="cxNome" min="-2" pref="242" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lbCodigo" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                      <Component id="cxCodigo" min="-2" pref="90" max="-2" attributes="0"/>
+                                      <Component id="lbPaginas" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cxPaginas" min="-2" pref="44" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lbCapitulos" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cxCapitulos" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="lbPublicacao" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cxPublicacao" min="-2" pref="87" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="lbEdicao" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                              <Component id="cxEdicao" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lbPaginas" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="cxPaginas" min="-2" pref="30" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="lbCapitulos" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="cxCapitulos" min="-2" pref="30" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="lbPublicacao" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="cxPublicacao" min="-2" pref="87" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="lbEdicao" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="lbDados" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="lbCaracteristicas" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="cxEdicao" min="-2" pref="30" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="lbDados" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                  <Component id="lbCaracteristicas" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btAlterar" alignment="1" min="-2" pref="141" max="-2" attributes="0"/>
-                          <Component id="btExcluir" alignment="1" min="-2" pref="141" max="-2" attributes="0"/>
-                          <Component id="btConsultar" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="btCientifico" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="btDidatico" min="-2" pref="81" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                              <Component id="btRelDidatico" min="-2" pref="132" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                              <Component id="lbTipoGenero" min="-2" pref="108" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="btRomance" max="32767" attributes="0"/>
-                                      <Component id="btHQ" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="btAlterar" alignment="1" min="-2" pref="141" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="btConsultar" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="btExcluir" alignment="1" pref="141" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btRelRomance" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btRelHQ" min="-2" pref="130" max="-2" attributes="0"/>
-                                      <Component id="btRelCientifico" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="btLimpar" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btSalvar" min="-2" pref="63" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btSair" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="lbTipoGenero" min="-2" pref="108" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                      <Component id="btRelGeral" min="-2" pref="123" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="btRomance" max="32767" attributes="0"/>
+                                                  <Component id="btHQ" max="32767" attributes="0"/>
+                                                  <Component id="btCientifico" alignment="1" min="-2" pref="78" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="btDidatico" min="-2" pref="79" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="btRelDidatico" max="32767" attributes="0"/>
+                                          <Component id="btRelRomance" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="btRelCientifico" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="btRelHQ" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="btVoltar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
-              <Component id="lbTitulo" min="-2" pref="201" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="346" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="btRelGeral" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btLimpar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btSair" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="btSalvar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
-          </Group>
+          <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -151,52 +158,60 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="btVoltar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbDados" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="lbTitulo" min="-2" pref="41" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="166" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btConsultar" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lbNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cxNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btVoltar" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="btSair" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btExcluir" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="lbCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cxCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbPrateleira" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cxPrateleira" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Component id="lbTipoGenero" min="-2" pref="24" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbDados" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btConsultar" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lbNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cxNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btExcluir" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="lbCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cxCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lbPrateleira" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cxPrateleira" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lbSecao" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                                   <Component id="cxSecao" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbTipoGenero" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="btRelGeral" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="lbTitulo" min="-2" pref="41" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="196" max="-2" attributes="0"/>
-                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btRomance" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="btRelRomance" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -204,16 +219,18 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lbPaginas" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cxPaginas" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbCapitulos" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cxCapitulos" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbPublicacao" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cxPublicacao" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="cxEdicao" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="btHQ" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbEdicao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lbPaginas" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cxPaginas" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbCapitulos" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cxCapitulos" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbPublicacao" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cxPublicacao" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btHQ" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbEdicao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Component id="btRelHQ" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -240,14 +257,9 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btRelGeral" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btSair" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="0" pref="35" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+              <Component id="jScrollPane2" min="-2" pref="161" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -265,6 +277,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Voltar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btVoltarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btAlterar">
       <Properties>
@@ -286,6 +301,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Excluir pelo nome"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btExcluirActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbNome">
       <Properties>
@@ -390,16 +408,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="HQ"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btHQActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btCientifico">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cient&#xed;fico"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCientificoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btDidatico">
       <Properties>
         <Property name="text" type="java.lang.String" value="Did&#xe1;tico"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btDidaticoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btLimpar">
       <Properties>
@@ -441,6 +468,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Relat&#xf3;rio Geral"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btRelGeralActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btSalvar">
       <Properties>
@@ -450,5 +480,41 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btSalvarActionPerformed"/>
       </Events>
     </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTable" name="tabLivro">
+          <Properties>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="10" rowCount="6">
+                <Column editable="true" title="Nome" type="java.lang.Object"/>
+                <Column editable="true" title="Cap&#xed;tulos" type="java.lang.Object"/>
+                <Column editable="true" title="C&#xf3;digo" type="java.lang.Object"/>
+                <Column editable="true" title="Prateleira" type="java.lang.Object"/>
+                <Column editable="true" title="Se&#xe7;&#xe3;o" type="java.lang.Object"/>
+                <Column editable="true" title="Publica&#xe7;&#xe3;o" type="java.lang.Object"/>
+                <Column editable="true" title="Autor" type="java.lang.Object"/>
+                <Column editable="true" title="Edi&#xe7;&#xe3;o" type="java.lang.Object"/>
+                <Column editable="true" title="Editora" type="java.lang.Object"/>
+                <Column editable="true" title="P&#xe1;ginas" type="java.lang.Object"/>
+              </Table>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Default Cursor"/>
+            </Property>
+            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabLivroMouseClicked"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

@@ -30,6 +30,6 @@ public class Cientificos extends Livro implements LivroEditora{
         System.out.println("--> A taxa da Editora por paginas e: " + taxa);
         
     }
+
     
-  
 }
