@@ -1,5 +1,5 @@
 //Beatriz Cristina de Faria RA: 2349710
-//Engenharia de Computação C31
+//Engenharia de Computaï¿½ï¿½o C31
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -41,9 +41,9 @@ public class Livro {
         return nome;
     }
 
-    public void setCodigo(String codigo) throws CodigoException{
-        if(codigo.length() <= 5) {
-            this.codigo = Integer.parseInt(codigo);
+    public void setCodigo(Integer codigo) throws CodigoException{
+        if(codigo.toString().length() <= 5) {
+            this.codigo = codigo;
         } else{
             throw new CodigoException();
         }
