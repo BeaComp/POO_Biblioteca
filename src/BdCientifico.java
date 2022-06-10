@@ -32,7 +32,7 @@ public class BdCientifico {
         return null;
     }
 
-    public Cientificos removeAlternate(Cientificos alt) {
+    public Cientificos removeCientificos(Cientificos alt) {
 
         if (verifyLivro(alt.getNome()) != null) {
             bdCientifico.remove(alt);
@@ -43,7 +43,7 @@ public class BdCientifico {
 
     }
 
-    public Cientificos atualizaMotorAlternado(Cientificos alt) {
+    public Cientificos atualizaLivroCientifico(Cientificos alt) {
         for (int i = 0; i < bdCientifico.size(); i++) {
             if (alt.getNome().equals(bdCientifico.get(i).getNome())) {
                 bdCientifico.set(i, alt);
