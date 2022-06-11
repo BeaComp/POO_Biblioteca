@@ -408,22 +408,22 @@ public class CadRomance extends javax.swing.JFrame {
     public void cadastrarRomance() {
         if (verifyLivro()) {
             romance = new Romance();
-            Livro livro = new Livro();
-
+            
+            
             try {
 
-                livro.setNome(cxNome.getText());
-                livro.setSecao(cxSecao.getText());
-                livro.setCodigo(Integer.parseInt(cxCodigo.getText()));
-                livro.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
+                romance.setNome(cxNome.getText());
+                romance.setSecao(cxSecao.getText());
+//                romance.setCodigo(Integer.parseInt(cxCodigo.getText()));
+//                romance.setPrateleira(Integer.parseInt(cxPrateleira.getText()));;
 
 
-                livro.getCaracteristicas().setPublicacao(cxPublicacao.getText());
-                livro.getCaracteristicas().setAutor(cxAutor.getText());
-                livro.getCaracteristicas().setEditora(cxEditora.getText());
-                livro.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
-                livro.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
-                livro.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
+                romance.getCaracteristicas().setPublicacao(cxPublicacao.getText());
+                romance.getCaracteristicas().setAutor(cxAutor.getText());
+                romance.getCaracteristicas().setEditora(cxEditora.getText());
+                romance.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
+                romance.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
+                romance.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
                 
                 romance.setPersonagens(Integer.parseInt(cxPersonagens.getText()));
                 romance.setTipo_romance(cxTipo.getText());
@@ -432,12 +432,12 @@ public class CadRomance extends javax.swing.JFrame {
                 recordLivro(romance);
                 
             } catch (NarradorException e) {
-                if(e.narrador != 1 || e.narrador != 3){;
+                if(e.narrador != 1 || e.narrador != 3){
                     e.limNarrador();
                     cxNarrador.setText("");
                     cxNarrador.requestFocus();
                 }
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Valores incondizentes com o tipo do campo!", "Erro!", JOptionPane.ERROR_MESSAGE);
             }
 

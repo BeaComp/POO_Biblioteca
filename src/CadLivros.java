@@ -144,7 +144,7 @@ public class CadLivros extends javax.swing.JFrame {
     }//GEN-LAST:event_cbHQActionPerformed
 
     private void cbCientificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCientificoActionPerformed
-        // TODO add your handling code here:
+        CadCientifico.getCadCientifico().setVisible(true);
     }//GEN-LAST:event_cbCientificoActionPerformed
 
     private void cbVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVoltarActionPerformed

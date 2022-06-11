@@ -4,10 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/febue/Documents/GitHub/POO_Livros/src/PrincipalJan.java</file>
+            <file>file:/C:/Users/febue/Documents/GitHub/POO_Livros/src/CadLivros.java</file>
+            <file>file:/C:/Users/febue/Documents/GitHub/POO_Livros/src/CadHQ.java</file>
             <file>file:/C:/Users/febue/Documents/GitHub/POO_Livros/src/CadRomance.java</file>
+            <file>file:/C:/Users/febue/Documents/GitHub/POO_Livros/src/Livro.java</file>
             <file>file:/C:/Users/febue/Documents/GitHub/POO_Livros/src/RelGeral.java</file>
-            <file>file:/C:/Users/febue/Documents/GitHub/POO_Livros/src/CadLivro.java</file>
-            <file>file:/C:/Users/febue/Documents/GitHub/POO_Livros/src/GerLivro.java</file>
+            <file>file:/C:/Users/febue/Documents/GitHub/POO_Livros/src/NarradorException.java</file>
+            <file>file:/C:/Users/febue/Documents/GitHub/POO_Livros/src/BdRomance.java</file>
+            <file>file:/C:/Users/febue/Documents/GitHub/POO_Livros/src/Romance.java</file>
         </group>
     </open-files>
 </project-private>

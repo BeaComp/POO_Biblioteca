@@ -5,11 +5,12 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Livro {
+    
     private String nome;
     private Integer codigo;
     private int prateleira;
     private String secao;
-    private Caracteristicas caracteristicas;
+    private Caracteristicas caracteristicas = new Caracteristicas();
 
     public Livro(){
        
