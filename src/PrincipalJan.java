@@ -80,7 +80,7 @@ public class PrincipalJan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCadLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadLivroActionPerformed
-        CadLivro.getCadLivro().setVisible(true);
+        CadLivros.getCadLivros().setVisible(true);
     }//GEN-LAST:event_btCadLivroActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
