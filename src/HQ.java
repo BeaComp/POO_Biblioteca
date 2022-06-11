@@ -8,7 +8,9 @@ public class HQ extends Livro implements LivroEditora{
     private boolean cor;
 
     private String franquia;
-
+    
+    
+    
     public void setIlustrador(String autor) {
         this.ilustrador = autor;
     }

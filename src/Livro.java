@@ -12,11 +12,7 @@ public class Livro {
     private Caracteristicas caracteristicas;
 
     public Livro(){
-        this.nome = "";
-        this.codigo = 0;
-        this.prateleira = 0;
-        this.secao = "";
-        this.caracteristicas = new Caracteristicas();
+       
     }
     
     //===============================

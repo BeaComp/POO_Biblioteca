@@ -7,6 +7,8 @@ public class Cientificos extends Livro implements LivroEditora{
     private String estudo;
     private String grau_academico;
 
+     
+     
     public void setEstudos(String generos) {
         this.estudo = generos;
     }

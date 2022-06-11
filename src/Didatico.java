@@ -6,7 +6,8 @@ public class Didatico extends Livro implements LivroEditora{
     private String area; //humanas, exatas
     private String disciplina;
     
-
+    
+     
     public void setDisciplina(String editora) {
         this.disciplina = editora;
     }
