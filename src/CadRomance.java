@@ -210,22 +210,6 @@ public class CadRomance extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbTipo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbPrateleira)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cxPrateleira, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbSecao)
-                                .addGap(18, 18, 18)
-                                .addComponent(cxSecao, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbNome)
@@ -274,7 +258,7 @@ public class CadRomance extends javax.swing.JFrame {
                                 .addComponent(lbCodigo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cxCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btLimpar)
@@ -285,18 +269,33 @@ public class CadRomance extends javax.swing.JFrame {
                                 .addGap(69, 69, 69))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btRelGeral, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(87, 87, 87))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(29, 29, 29)
-                                .addComponent(lbTaxa)
+                                    .addComponent(jLabel2)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(btnTaxes)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(lbTaxa))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btRelGeral, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(87, 87, 87))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbPrateleira)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cxPrateleira, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbSecao)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnTaxes)
-                                .addGap(102, 102, 102))))))
+                                .addComponent(cxSecao, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbTipo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,9 +367,10 @@ public class CadRomance extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btConsultar)
-                        .addGap(146, 146, 146)
+                        .addGap(130, 130, 130)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
                             .addComponent(lbTaxa)
                             .addComponent(btnTaxes))))
                 .addGap(0, 36, Short.MAX_VALUE))
@@ -403,13 +403,12 @@ public class CadRomance extends javax.swing.JFrame {
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
 
         cadastrarRomance();
-        clean();
         listaTab();
 
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btRelGeralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRelGeralActionPerformed
-
+        abreRelGerLivro();
     }//GEN-LAST:event_btRelGeralActionPerformed
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
@@ -427,13 +426,13 @@ public class CadRomance extends javax.swing.JFrame {
     }//GEN-LAST:event_btExcluirActionPerformed
 
     private void btnTaxesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaxesActionPerformed
-       if(cxPaginas.getText().equals(""))
-           JOptionPane.showMessageDialog(null, "Inserir numero de paginas!", "Erro!", JOptionPane.ERROR_MESSAGE);
-       else{
-           int pages = Integer.parseInt(cxPaginas.getText());
-           calctaxa(pages);  
-       }
-              // TODO add your handling code here:
+        if (cxPaginas.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Inserir numero de paginas!", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            int pages = Integer.parseInt(cxPaginas.getText());
+            calctaxa(pages);
+        }
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnTaxesActionPerformed
 
 //     public void abreRelGerLivro(){
@@ -446,51 +445,101 @@ public class CadRomance extends javax.swing.JFrame {
         lbTaxa.setText(String.format("R$ %.2f", taxa));
     }
 
+    public void abreRelGerLivro() {
+        RelGeral.getRelGeralRomance(bdromance).setVisible(true);
+    }
+
+    public Romance registInformations(Romance rom) {
+
+        rom.setNome(cxNome.getText());
+        rom.setSecao(cxSecao.getText());
+
+        rom.getCaracteristicas().setPublicacao(cxPublicacao.getText());
+        rom.getCaracteristicas().setAutor(cxAutor.getText());
+        rom.getCaracteristicas().setEditora(cxEditora.getText());
+        rom.setTipo_romance(cxTipo.getText());
+
+        try {
+            rom.setCodigo(Integer.parseInt(cxCodigo.getText()));
+        } catch (CodigoException e) {
+            e.limCodigo();
+            cxCodigo.setText("");
+            cxCodigo.requestFocus();
+            return null;
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "O código deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+
+        try {
+            rom.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
+        } catch (PrateleiraException nfe) {
+            cxPrateleira.setText("");
+            cxPrateleira.requestFocus();
+            JOptionPane.showMessageDialog(null, "Há somente 10 prateleiras!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "A prateleira deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+
+        try {
+            rom.setNarrador(Integer.parseInt(cxNarrador.getText()));
+        } catch (NarradorException nfe) {
+            cxNarrador.setText("");
+            cxNarrador.requestFocus();
+            JOptionPane.showMessageDialog(null, "O narrador deve ser de 1 (primeira) ou 3 (terceira) pessoa!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+
+        try {
+            bdromance = new BdRomance();
+            rom.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
+        } catch (NumberFormatException nfe) {
+            cxPaginas.setText("");
+            cxPaginas.requestFocus();
+            JOptionPane.showMessageDialog(null, "A página deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+
+        try {
+            rom.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
+        } catch (NumberFormatException nfe) {
+            cxCapitulos.setText("");
+            cxCapitulos.requestFocus();
+            JOptionPane.showMessageDialog(null, "A página deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+
+        try {
+            rom.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
+        } catch (NumberFormatException nfe) {
+            cxEdicao.setText("");
+            cxEdicao.requestFocus();
+            JOptionPane.showMessageDialog(null, "A página deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+
+        try {
+            rom.setPersonagens(Integer.parseInt(cxPersonagens.getText()));
+        } catch (NumberFormatException nfe) {
+            cxPersonagens.setText("");
+            cxPersonagens.requestFocus();
+            JOptionPane.showMessageDialog(null, "O persoangem deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+
+        return rom;
+
+    }
+
     public void cadastrarRomance() {
         if (verifyLivro()) {
             romance = new Romance();
-
-            try {
-                romance.setCodigo(Integer.parseInt(cxCodigo.getText()));
-            } catch (CodigoException e) {
-                int x = e.codigo;
-                String y = String.valueOf(x);
-
-                JOptionPane.showMessageDialog(null, "O código deve ser menor que 5 caracteres!", "Erro!", JOptionPane.ERROR_MESSAGE);
-
-                if (y.length() > 5) {
-                    e.limCodigo();
-                    cxCodigo.setText("");
-                    cxCodigo.requestFocus();
-                }
-            }
-
-            try {
-                romance.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
-            } catch (PrateleiraException nfe) {
-                JOptionPane.showMessageDialog(null, "Há somente 10 prateleiras!", "Erro!", JOptionPane.ERROR_MESSAGE);
-            }
-
-            try {
-                romance.setNarrador(Integer.parseInt(cxNarrador.getText()));
-            } catch (NarradorException nfe) {
-                JOptionPane.showMessageDialog(null, "O narrador deve ser de 1 (primeira) ou 3 (terceira) pessoa!", "Erro!", JOptionPane.ERROR_MESSAGE);
-            }
-
-            romance.setNome(cxNome.getText());
-            romance.setSecao(cxSecao.getText());
-
-            romance.getCaracteristicas().setPublicacao(cxPublicacao.getText());
-            romance.getCaracteristicas().setAutor(cxAutor.getText());
-            romance.getCaracteristicas().setEditora(cxEditora.getText());
-            romance.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
-            romance.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
-            romance.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
-
-            romance.setPersonagens(Integer.parseInt(cxPersonagens.getText()));
-            romance.setTipo_romance(cxTipo.getText());
-
-            recordLivro(romance);
+            Romance romToSave = registInformations(romance);
+            
+            if(romToSave != null)
+                recordLivro(romToSave);
 
         } else {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Erro!", JOptionPane.ERROR_MESSAGE);
@@ -541,16 +590,12 @@ public class CadRomance extends javax.swing.JFrame {
             try {
                 romance.setCodigo(Integer.parseInt(cxCodigo.getText()));
             } catch (CodigoException e) {
-                int x = e.codigo;
-                String y = String.valueOf(x);
+                e.limCodigo();
+                cxCodigo.setText("");
+                cxCodigo.requestFocus();
 
-                JOptionPane.showMessageDialog(null, "O código deve ser menor que 5 caracteres!", "Erro!", JOptionPane.ERROR_MESSAGE);
-
-                if (y.length() > 5) {
-                    e.limCodigo();
-                    cxCodigo.setText("");
-                    cxCodigo.requestFocus();
-                }
+            } catch (NumberFormatException nfe) {
+                JOptionPane.showMessageDialog(null, "O código deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
             }
 
             try {

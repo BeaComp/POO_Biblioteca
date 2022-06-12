@@ -100,7 +100,7 @@
                               <Component id="cxCodigo" min="-2" pref="90" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace type="unrelated" pref="18" max="32767" attributes="0"/>
+                      <EmptySpace pref="18" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="btLimpar" min="-2" max="-2" attributes="0"/>
@@ -118,6 +118,17 @@
                                   <Component id="btAlterar" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="btnTaxes" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="lbTaxa" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -190,13 +201,20 @@
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lbArea" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cxArea" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                              <Component id="lbTaxa" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnTaxes" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lbDisciplina" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cxDisciplina" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -206,7 +224,7 @@
                   </Group>
                   <Component id="btConsultar" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="36" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="35" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -486,6 +504,24 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="text" type="java.lang.String" value="--- Caracteristicas G&#xea;nero Romance ---"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnTaxes">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Calcular Taxa"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTaxesActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbTaxa">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="R$ 0,00"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Taxa da Editora: "/>
       </Properties>
     </Component>
   </SubComponents>

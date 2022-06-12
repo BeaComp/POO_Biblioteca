@@ -35,11 +35,13 @@ public class HQ extends Livro implements LivroEditora{
     }
     
     //POLIMORFISMO SOBRESCRITA
-    public void calcTaxaEditora() {
-        double taxa = 0;
-        taxa = getCaracteristicas().getPaginas() * 0.5;
+    @Override
+    public double calcTaxaEditora(int fee) {
+        try {
+            return fee * 0.5;
+        } catch (Exception e) {
+            return 0;
+        }
 
-        System.out.println("---> A taxa da Editora por paginas e: " + taxa);
-        
     }
 }

@@ -64,6 +64,9 @@ public class CadDidatico extends javax.swing.JFrame {
         lbDisciplina = new javax.swing.JLabel();
         cxDisciplina = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        btnTaxes = new javax.swing.JButton();
+        lbTaxa = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -183,6 +186,17 @@ public class CadDidatico extends javax.swing.JFrame {
 
         jLabel1.setText("--- Caracteristicas Gênero Romance ---");
 
+        btnTaxes.setText("Calcular Taxa");
+        btnTaxes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaxesActionPerformed(evt);
+            }
+        });
+
+        lbTaxa.setText("R$ 0,00");
+
+        jLabel2.setText("Taxa da Editora: ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -252,7 +266,7 @@ public class CadDidatico extends javax.swing.JFrame {
                                 .addComponent(lbCodigo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cxCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 18, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btLimpar)
@@ -267,7 +281,15 @@ public class CadDidatico extends javax.swing.JFrame {
                                     .addComponent(btRelGeral, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(87, 87, 87))))))
+                                .addGap(87, 87, 87))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnTaxes)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lbTaxa)))
+                                .addGap(46, 46, 46))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,19 +346,24 @@ public class CadDidatico extends javax.swing.JFrame {
                                 .addComponent(lbEditora)
                                 .addComponent(cxEditora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(11, 11, 11)
-                        .addComponent(jLabel1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbArea)
-                            .addComponent(cxArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
+                            .addComponent(cxArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lbTaxa)
+                                .addComponent(btnTaxes)))
+                        .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbDisciplina)
                             .addComponent(cxDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(25, 25, 25)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btConsultar))
-                .addGap(0, 36, Short.MAX_VALUE))
+                .addGap(0, 35, Short.MAX_VALUE))
         );
 
         pack();
@@ -372,7 +399,7 @@ public class CadDidatico extends javax.swing.JFrame {
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btRelGeralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRelGeralActionPerformed
-        
+       abreRelGerLivro();
     }//GEN-LAST:event_btRelGeralActionPerformed
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
@@ -388,12 +415,28 @@ public class CadDidatico extends javax.swing.JFrame {
        clean();
        listaTab();
     }//GEN-LAST:event_btExcluirActionPerformed
+
+    private void btnTaxesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaxesActionPerformed
+        if(cxPaginas.getText().equals(""))
+        JOptionPane.showMessageDialog(null, "Inserir numero de paginas!", "Erro!", JOptionPane.ERROR_MESSAGE);
+        else{
+            int pages = Integer.parseInt(cxPaginas.getText());
+            calctaxa(pages);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTaxesActionPerformed
+    
+    public void calctaxa(int fee) {
+        Didatico did = new Didatico();
+        double taxa = did.calcTaxaEditora(fee);
+
+        lbTaxa.setText(String.format("R$ %.2f", taxa));
+    }
     
     
-    
-//     public void abreRelGerLivro(){
-//        RelGeral.getRelGeral(bdromance).setVisible(true);
-//    } ;
+     public void abreRelGerLivro(){
+        RelGeral.getRelGeralDidatico(bdDidatico).setVisible(true);
+    } 
     
     public void cadastrarDidatico() {
         if (verifyLivro()) {
@@ -711,6 +754,7 @@ public class CadDidatico extends javax.swing.JFrame {
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSalvar;
     private javax.swing.JButton btVoltar;
+    private javax.swing.JButton btnTaxes;
     private javax.swing.JTextField cxArea;
     private javax.swing.JTextField cxAutor;
     private javax.swing.JTextField cxCapitulos;
@@ -724,6 +768,7 @@ public class CadDidatico extends javax.swing.JFrame {
     private javax.swing.JTextField cxPublicacao;
     private javax.swing.JTextField cxSecao;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbArea;
     private javax.swing.JLabel lbAutor;
@@ -739,6 +784,7 @@ public class CadDidatico extends javax.swing.JFrame {
     private javax.swing.JLabel lbPrateleira;
     private javax.swing.JLabel lbPublicacao;
     private javax.swing.JLabel lbSecao;
+    private javax.swing.JLabel lbTaxa;
     private javax.swing.JLabel lbTitulo;
     private javax.swing.JTable tabLivro;
     // End of variables declaration//GEN-END:variables

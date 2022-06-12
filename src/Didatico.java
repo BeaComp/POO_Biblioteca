@@ -25,13 +25,16 @@ public class Didatico extends Livro implements LivroEditora{
     }
 
     //POLIMORFISMO SOBRESCRITA
-    public void calcTaxaEditora() {
-        double taxa = 0;
-        taxa = getCaracteristicas().getPaginas() * 2.5;
+    @Override
+    public double calcTaxaEditora(int fee) {
+        try {
+            return fee * 2.5;
+        } catch (Exception e) {
+            return 0;
+        }
 
-        System.out.println(" ---> A taxa da editora por paginas e: " + taxa);
-        
     }
+
     
     
 }

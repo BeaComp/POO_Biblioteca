@@ -13,6 +13,8 @@ public class PrateleiraException extends Exception{
     }
     
     public void limPrateleira(){
-        JOptionPane.showMessageDialog(null, "Ha somente 10 prateleiras.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        if(prateleira > 10){
+             JOptionPane.showMessageDialog(null, "Ha somente 10 prateleiras.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }

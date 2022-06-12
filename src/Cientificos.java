@@ -25,12 +25,14 @@ public class Cientificos extends Livro implements LivroEditora{
     }
 
     //POLIMORFISMO SOBRESCRITA
-    public void calcTaxaEditora() {
-        double taxa = 0;
-        taxa = getCaracteristicas().getPaginas() * 5.0;
+    @Override
+    public double calcTaxaEditora(int fee) {
+        try {
+            return fee * 5.0;
+        } catch (Exception e) {
+            return 0;
+        }
 
-        System.out.println("--> A taxa da Editora por paginas e: " + taxa);
-        
     }
 
     

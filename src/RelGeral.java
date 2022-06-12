@@ -8,8 +8,11 @@ public class RelGeral extends javax.swing.JFrame {
 
     
     private static RelGeral unicoRG;
-    private static Livro livro = new Livro();
-    private static GerLivro gp;
+    private static BdRomance bdromance = new BdRomance();
+    private static BdCientifico bdCientifico = new BdCientifico();
+    private static BdHQ bdhq = new BdHQ();
+    private static BdDidatico bdDidatico = new BdDidatico(); 
+   
     
     
 
@@ -17,8 +20,8 @@ public class RelGeral extends javax.swing.JFrame {
         initComponents();
     }
     
-    public static RelGeral getRelGeral(GerLivro gp1){
-        gp = gp1;
+    public static RelGeral getRelGeralDidatico(BdDidatico bd){
+        bdDidatico = bd;
         
         if(unicoRG == null){
             unicoRG = new RelGeral();
@@ -26,7 +29,33 @@ public class RelGeral extends javax.swing.JFrame {
         return unicoRG;
     }
     
- 
+    public static RelGeral getRelGeralCientifico(BdCientifico bd){
+        bdCientifico = bd;
+        
+        if(unicoRG == null){
+            unicoRG = new RelGeral();
+        }
+        return unicoRG;
+    }
+    
+    public static RelGeral getRelGeralHQ(BdHQ bd){
+        bdhq = bd;
+        
+        if(unicoRG == null){
+            unicoRG = new RelGeral();
+        }
+        return unicoRG;
+    }
+    
+    public static RelGeral getRelGeralRomance(BdRomance bd){
+        bdromance = bd;
+        
+        if(unicoRG == null){
+            unicoRG = new RelGeral();
+        }
+        return unicoRG;
+    }
+    
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -83,6 +112,11 @@ public class RelGeral extends javax.swing.JFrame {
                 tbRomanceMouseClicked(evt);
             }
         });
+        tbRomance.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tbRomancePropertyChange(evt);
+            }
+        });
         jScrollPane2.setViewportView(tbRomance);
 
         lbRomance.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -110,6 +144,11 @@ public class RelGeral extends javax.swing.JFrame {
                 tbCientificoMouseClicked(evt);
             }
         });
+        tbCientifico.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tbCientificoPropertyChange(evt);
+            }
+        });
         jScrollPane3.setViewportView(tbCientifico);
 
         lbHQ.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -132,6 +171,11 @@ public class RelGeral extends javax.swing.JFrame {
         tbHQ.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbHQMouseClicked(evt);
+            }
+        });
+        tbHQ.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tbHQPropertyChange(evt);
             }
         });
         jScrollPane4.setViewportView(tbHQ);
@@ -157,6 +201,14 @@ public class RelGeral extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbDidaticoMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tbDidaticoMouseEntered(evt);
+            }
+        });
+        tbDidatico.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tbDidaticoPropertyChange(evt);
+            }
         });
         jScrollPane5.setViewportView(tbDidatico);
 
@@ -180,22 +232,19 @@ public class RelGeral extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(lbHQ)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane3)
-                        .addContainerGap())
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 952, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbCientifico)
-                            .addComponent(lbDidatico))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane5)
+                            .addComponent(jScrollPane2)
+                            .addComponent(jScrollPane3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbCientifico)
+                                    .addComponent(lbDidatico))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane5))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -231,7 +280,7 @@ public class RelGeral extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_formPropertyChange
-        listaTab();
+        
     }//GEN-LAST:event_formPropertyChange
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
@@ -239,20 +288,40 @@ public class RelGeral extends javax.swing.JFrame {
     }//GEN-LAST:event_btVoltarActionPerformed
 
     private void tbRomanceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRomanceMouseClicked
-        selectTab();
+        selectTabRomance();
     }//GEN-LAST:event_tbRomanceMouseClicked
 
     private void tbCientificoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbCientificoMouseClicked
-        selectTab();
+        selectTabCientifico();
     }//GEN-LAST:event_tbCientificoMouseClicked
 
     private void tbHQMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHQMouseClicked
-        selectTab();
+        selectTabHQ();
     }//GEN-LAST:event_tbHQMouseClicked
 
     private void tbDidaticoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDidaticoMouseClicked
-        selectTab();
+        selectTabDidatico();
     }//GEN-LAST:event_tbDidaticoMouseClicked
+
+    private void tbRomancePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbRomancePropertyChange
+        listaTabRomance();
+    }//GEN-LAST:event_tbRomancePropertyChange
+
+    private void tbCientificoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbCientificoPropertyChange
+        listaTabCientifico();
+    }//GEN-LAST:event_tbCientificoPropertyChange
+
+    private void tbHQPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbHQPropertyChange
+         listaTabHQ();
+    }//GEN-LAST:event_tbHQPropertyChange
+
+    private void tbDidaticoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbDidaticoPropertyChange
+        listaTabDidatico();
+    }//GEN-LAST:event_tbDidaticoPropertyChange
+
+    private void tbDidaticoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDidaticoMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbDidaticoMouseEntered
     
     public void exit() {
         int resp = JOptionPane.showConfirmDialog(null, "Deseja Sair?", "Saida", JOptionPane.YES_NO_CANCEL_OPTION);
@@ -262,34 +331,140 @@ public class RelGeral extends javax.swing.JFrame {
         }
     }
     
-    public void listaTab(){
+    public void listaTabRomance(){
     
-        DefaultTableModel modelo = (DefaultTableModel)tabGeral.getModel();
+        DefaultTableModel modelo = (DefaultTableModel)tbRomance.getModel();
         int posLin = 0;
         modelo.setRowCount(posLin);
         
-        for(Livro livro : gp.getBdLivro()){
+       for (Romance livro : bdromance.getBdRomance()) {
+            modelo.insertRow(posLin, new Object[]{livro.getNome(), livro.getCaracteristicas().getCapitulos(), livro.getCodigo(),
+                livro.getPrateleira(), livro.getSecao(), livro.getCaracteristicas().getPublicacao(), livro.getCaracteristicas().getAutor(),
+                livro.getCaracteristicas().getEdicao(), livro.getCaracteristicas().getEditora(), livro.getCaracteristicas().getPaginas(),
+                livro.getPersonagens(), livro.getTipo_romance(), livro.getNarrador()});
+            posLin++;
+        }
+    }
+    
+    public void listaTabDidatico(){
+    
+        DefaultTableModel modelo = (DefaultTableModel)tbDidatico.getModel();
+        int posLin = 0;
+        modelo.setRowCount(posLin);
+        
+       for(Didatico livro : bdDidatico.getBdDidatico()){
             modelo.insertRow(posLin, new Object[]{livro.getNome(),livro.getCaracteristicas().getCapitulos(), livro.getCodigo(), 
                 livro.getPrateleira(), livro.getSecao(), livro.getCaracteristicas().getPublicacao(), livro.getCaracteristicas().getAutor(),
-                livro.getCaracteristicas().getEdicao(), livro.getCaracteristicas().getEditora(), livro.getCaracteristicas().getPaginas()});
+                livro.getCaracteristicas().getEdicao(), livro.getCaracteristicas().getEditora(), livro.getCaracteristicas().getPaginas(),
+                livro.getArea(), livro.getDisciplina()});
             posLin++;
         }
     }
    
-    public void selectTab(){
-        String valLinTab = "";
-        int posLin = tabGeral.getSelectedRow();
-       
-        for(int coluna = 0; coluna < tabGeral.getColumnCount(); coluna++){
-            valLinTab += tabGeral.getModel().getValueAt(posLin, coluna).toString();
-            
-            if(coluna+1 < tabGeral.getColumnCount()){
+    public void listaTabCientifico(){
+    
+        DefaultTableModel modelo = (DefaultTableModel)tbCientifico.getModel();
+        int posLin = 0;
+        modelo.setRowCount(posLin);
+        
+        for(Cientificos livro : bdCientifico.getBdCientifico()){
+            modelo.insertRow(posLin, new Object[]{livro.getNome(),livro.getCaracteristicas().getCapitulos(), livro.getCodigo(), 
+                livro.getPrateleira(), livro.getSecao(), livro.getCaracteristicas().getPublicacao(), livro.getCaracteristicas().getAutor(),
+                livro.getCaracteristicas().getEdicao(), livro.getCaracteristicas().getEditora(), livro.getCaracteristicas().getPaginas(),
+                livro.getGrau_academico(), livro.getEstudos()});
+            posLin++;
+        }
+    }
+    
+     public void listaTabHQ(){
+    
+        DefaultTableModel modelo = (DefaultTableModel)tbHQ.getModel();
+        int posLin = 0;
+        modelo.setRowCount(posLin);
+        
+         for(HQ livro : bdhq.getBdHQ()){
+            modelo.insertRow(posLin, new Object[]{livro.getNome(),livro.getCaracteristicas().getCapitulos(), livro.getCodigo(), 
+                livro.getPrateleira(), livro.getSecao(), livro.getCaracteristicas().getPublicacao(), livro.getCaracteristicas().getAutor(),
+                livro.getCaracteristicas().getEdicao(), livro.getCaracteristicas().getEditora(), livro.getCaracteristicas().getPaginas(),
+                livro.getIlustrador(), livro.getFranquia(), livro.getCor()});
+            posLin++;
+        }
+    }
+     
+    public void selectTabRomance(){
+         String valLinTab = "";
+        int posLin = tbRomance.getSelectedRow();
+
+        for (int coluna = 0; coluna < tbRomance.getColumnCount(); coluna++) {
+            valLinTab += tbRomance.getModel().getValueAt(posLin, coluna).toString();
+
+            if (coluna + 1 < tbRomance.getColumnCount()) {
                 valLinTab += " - ";
             }
         }
         JOptionPane.showMessageDialog(
                 null,
-                "valor da Linha: "+valLinTab,
+                "valor da Linha: " + valLinTab,
+                "Seleção",
+                1
+        );
+        
+    }
+    
+    public void selectTabCientifico(){
+         String valLinTab = "";
+        int posLin = tbCientifico.getSelectedRow();
+
+        for (int coluna = 0; coluna < tbCientifico.getColumnCount(); coluna++) {
+            valLinTab += tbCientifico.getModel().getValueAt(posLin, coluna).toString();
+
+            if (coluna + 1 < tbCientifico.getColumnCount()) {
+                valLinTab += " - ";
+            }
+        }
+        JOptionPane.showMessageDialog(
+                null,
+                "valor da Linha: " + valLinTab,
+                "Seleção",
+                1
+        );
+        
+    }
+    
+    public void selectTabHQ(){
+         String valLinTab = "";
+        int posLin = tbHQ.getSelectedRow();
+
+        for (int coluna = 0; coluna < tbHQ.getColumnCount(); coluna++) {
+            valLinTab += tbHQ.getModel().getValueAt(posLin, coluna).toString();
+
+            if (coluna + 1 < tbHQ.getColumnCount()) {
+                valLinTab += " - ";
+            }
+        }
+        JOptionPane.showMessageDialog(
+                null,
+                "valor da Linha: " + valLinTab,
+                "Seleção",
+                1
+        );
+        
+    }
+    
+    public void selectTabDidatico(){
+         String valLinTab = "";
+        int posLin = tbDidatico.getSelectedRow();
+
+        for (int coluna = 0; coluna < tbDidatico.getColumnCount(); coluna++) {
+            valLinTab += tbDidatico.getModel().getValueAt(posLin, coluna).toString();
+
+            if (coluna + 1 < tbDidatico.getColumnCount()) {
+                valLinTab += " - ";
+            }
+        }
+        JOptionPane.showMessageDialog(
+                null,
+                "valor da Linha: " + valLinTab,
                 "Seleção",
                 1
         );
