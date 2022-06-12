@@ -350,12 +350,13 @@ public class CadDidatico extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbArea)
-                            .addComponent(cxArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lbTaxa)
-                                .addComponent(btnTaxes)))
+                                .addComponent(btnTaxes))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lbArea)
+                                .addComponent(cxArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbDisciplina)
@@ -393,7 +394,7 @@ public class CadDidatico extends javax.swing.JFrame {
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
 
        cadastrarDidatico();
-       clean();
+      
        listaTab();
      
     }//GEN-LAST:event_btSalvarActionPerformed
@@ -423,7 +424,7 @@ public class CadDidatico extends javax.swing.JFrame {
             int pages = Integer.parseInt(cxPaginas.getText());
             calctaxa(pages);
         }
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnTaxesActionPerformed
     
     public void calctaxa(int fee) {
@@ -438,57 +439,89 @@ public class CadDidatico extends javax.swing.JFrame {
         RelGeral.getRelGeralDidatico(bdDidatico).setVisible(true);
     } 
     
+     public Didatico registInformations(Didatico did) {
+
+        did.setNome(cxNome.getText());
+        did.setSecao(cxSecao.getText());
+
+        did.getCaracteristicas().setPublicacao(cxPublicacao.getText());
+        did.getCaracteristicas().setAutor(cxAutor.getText());
+        did.getCaracteristicas().setEditora(cxEditora.getText());
+        
+        did.setArea(cxArea.getText());
+        did.setDisciplina(cxDisciplina.getText());
+        
+        try {
+            did.setCodigo(Integer.parseInt(cxCodigo.getText()));
+        } catch (CodigoException e) {
+            e.limCodigo();
+            cxCodigo.setText("");
+            cxCodigo.requestFocus();
+            return null;
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "O código deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+
+        try {
+            did.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
+        } catch (PrateleiraException nfe) {
+            nfe.limPrateleira();
+            cxPrateleira.setText("");
+            cxPrateleira.requestFocus();
+            JOptionPane.showMessageDialog(null, "Há somente 10 prateleiras!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "A prateleira deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+
+       
+
+        try {
+            did.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
+        } catch (NumberFormatException nfe) {
+            cxPaginas.setText("");
+            cxPaginas.requestFocus();
+            JOptionPane.showMessageDialog(null, "A página deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+
+        try {
+            did.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
+        } catch (NumberFormatException nfe) {
+            cxCapitulos.setText("");
+            cxCapitulos.requestFocus();
+            JOptionPane.showMessageDialog(null, "A página deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+
+        try {
+            did.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
+        } catch (NumberFormatException nfe) {
+            cxEdicao.setText("");
+            cxEdicao.requestFocus();
+            JOptionPane.showMessageDialog(null, "A página deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+
+       
+
+        return did;
+
+    }
+     
     public void cadastrarDidatico() {
         if (verifyLivro()) {
             didatico = new Didatico();
-           
-
-            try{
-                didatico.setCodigo(Integer.parseInt(cxCodigo.getText()));
-            } catch (CodigoException e) {
-                int x = e.codigo;
-                String y = String.valueOf(x);
-                
-                JOptionPane.showMessageDialog(null, "O código deve ser menor que 5 caracteres!", "Erro!", JOptionPane.ERROR_MESSAGE);
-                
-                if (y.length() > 5) {
-                    e.limCodigo();
-                    cxCodigo.setText("");
-                    cxCodigo.requestFocus();
-                }
-            } 
-   
-        
-            try{
-                didatico.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
-            } catch(PrateleiraException nfe){
-                JOptionPane.showMessageDialog(null, "Há somente 10 prateleiras!", "Erro!", JOptionPane.ERROR_MESSAGE);
-            }
+            Didatico didToSave = registInformations(didatico);
             
-
-                didatico.setNome(cxNome.getText());
-                didatico.setSecao(cxSecao.getText());
-                
-
-
-                didatico.getCaracteristicas().setPublicacao(cxPublicacao.getText());
-                didatico.getCaracteristicas().setAutor(cxAutor.getText());
-                didatico.getCaracteristicas().setEditora(cxEditora.getText());
-                didatico.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
-                didatico.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
-                didatico.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
-                
-                didatico.setArea(cxArea.getText());
-                didatico.setDisciplina(cxDisciplina.getText());
-               
-                recordLivro(didatico);
-                
-            
+            if(didToSave != null)
+                recordLivro(didToSave);
 
         } else {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Erro!", JOptionPane.ERROR_MESSAGE);
         }
-
     }
    
     public void excluir() {
@@ -532,61 +565,24 @@ public class CadDidatico extends javax.swing.JFrame {
     public void alterar() {
         if (verifyLivro()) {
             didatico = new Didatico();
+            Didatico didToSave = registInformations(didatico);
             
+            if(didToSave != null)
+                recordLivro(didToSave);
+            
+            
+            Didatico didAtu = bdDidatico.atualizaLivroDidatico(didToSave);
 
-            try{
-                didatico.setCodigo(Integer.parseInt(cxCodigo.getText()));
-            } catch (CodigoException e) {
-                int x = e.codigo;
-                String y = String.valueOf(x);
-                
-                JOptionPane.showMessageDialog(null, "O código deve ser menor que 5 caracteres!", "Erro!", JOptionPane.ERROR_MESSAGE);
-                
-                if (y.length() > 5) {
-                    e.limCodigo();
-                    cxCodigo.setText("");
-                    cxCodigo.requestFocus();
+            if (didAtu == null) {
+                int resp = JOptionPane.showConfirmDialog(null, "Livro não registrado, deseja registrar?", "Resultado", JOptionPane.YES_NO_CANCEL_OPTION);
+                if (resp == 0) {
+                    recordLivro(didatico);
                 }
-            } 
-   
-        
-            try{
-                didatico.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
-            } catch(PrateleiraException nfe){
-                JOptionPane.showMessageDialog(null, "Há somente 10 prateleiras!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Livro alterado com sucesso!", "Alteração OK", 1);
+
             }
             
-
-                didatico.setNome(cxNome.getText());
-                didatico.setSecao(cxSecao.getText());
-                
-
-
-                didatico.getCaracteristicas().setPublicacao(cxPublicacao.getText());
-                didatico.getCaracteristicas().setAutor(cxAutor.getText());
-                didatico.getCaracteristicas().setEditora(cxEditora.getText());
-                didatico.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
-                didatico.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
-                didatico.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
-                
-                didatico.setArea(cxArea.getText());
-                didatico.setDisciplina(cxDisciplina.getText());
-               
-
-                Didatico didAtu = bdDidatico.atualizaLivroDidatico(didatico);
-
-                if (didAtu == null) {
-                    int resp = JOptionPane.showConfirmDialog(null, "Livro não registrado, deseja registrar?", "Resultado", JOptionPane.YES_NO_CANCEL_OPTION);
-                    if (resp == 0) {
-                        recordLivro(didatico);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Livro alterado com sucesso!", "Alteração OK", 1);
-                    
-                }
-
-           
-
         } else {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Erro!", JOptionPane.ERROR_MESSAGE);
         }

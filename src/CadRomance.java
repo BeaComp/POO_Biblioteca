@@ -432,12 +432,10 @@ public class CadRomance extends javax.swing.JFrame {
             int pages = Integer.parseInt(cxPaginas.getText());
             calctaxa(pages);
         }
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnTaxesActionPerformed
 
-//     public void abreRelGerLivro(){
-//        RelGeral.getRelGeral(bdromance).setVisible(true);
-//    } ;
+
     public void calctaxa(int fee) {
         Romance rom = new Romance();
         double taxa = rom.calcTaxaEditora(fee);
@@ -474,6 +472,7 @@ public class CadRomance extends javax.swing.JFrame {
         try {
             rom.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
         } catch (PrateleiraException nfe) {
+            nfe.limPrateleira();
             cxPrateleira.setText("");
             cxPrateleira.requestFocus();
             JOptionPane.showMessageDialog(null, "Há somente 10 prateleiras!", "Erro!", JOptionPane.ERROR_MESSAGE);
@@ -486,6 +485,7 @@ public class CadRomance extends javax.swing.JFrame {
         try {
             rom.setNarrador(Integer.parseInt(cxNarrador.getText()));
         } catch (NarradorException nfe) {
+            nfe.limNarrador();
             cxNarrador.setText("");
             cxNarrador.requestFocus();
             JOptionPane.showMessageDialog(null, "O narrador deve ser de 1 (primeira) ou 3 (terceira) pessoa!", "Erro!", JOptionPane.ERROR_MESSAGE);
@@ -493,8 +493,7 @@ public class CadRomance extends javax.swing.JFrame {
         }
 
         try {
-            bdromance = new BdRomance();
-            rom.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
+              rom.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
         } catch (NumberFormatException nfe) {
             cxPaginas.setText("");
             cxPaginas.requestFocus();
@@ -584,46 +583,16 @@ public class CadRomance extends javax.swing.JFrame {
     }
 
     public void alterar() {
-        if (verifyLivro()) {
+       
+            if (verifyLivro()) {
             romance = new Romance();
-
-            try {
-                romance.setCodigo(Integer.parseInt(cxCodigo.getText()));
-            } catch (CodigoException e) {
-                e.limCodigo();
-                cxCodigo.setText("");
-                cxCodigo.requestFocus();
-
-            } catch (NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(null, "O código deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
-            }
-
-            try {
-                romance.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
-            } catch (PrateleiraException nfe) {
-                JOptionPane.showMessageDialog(null, "Há somente 10 prateleiras!", "Erro!", JOptionPane.ERROR_MESSAGE);
-            }
-
-            try {
-                romance.setNarrador(Integer.parseInt(cxNarrador.getText()));
-            } catch (NarradorException nfe) {
-                JOptionPane.showMessageDialog(null, "O narrador deve ser de 1 (primeira) ou 3 (terceira) pessoa!", "Erro!", JOptionPane.ERROR_MESSAGE);
-            }
-
-            romance.setNome(cxNome.getText());
-            romance.setSecao(cxSecao.getText());
-
-            romance.getCaracteristicas().setPublicacao(cxPublicacao.getText());
-            romance.getCaracteristicas().setAutor(cxAutor.getText());
-            romance.getCaracteristicas().setEditora(cxEditora.getText());
-            romance.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
-            romance.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
-            romance.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
-
-            romance.setPersonagens(Integer.parseInt(cxPersonagens.getText()));
-            romance.setTipo_romance(cxTipo.getText());
-
-            Romance romanceAtu = bdromance.atualizaLivroRomance(romance);
+            Romance romToSave = registInformations(romance);
+            
+            if(romToSave != null)
+                recordLivro(romToSave);
+            
+            
+            Romance romanceAtu = bdromance.atualizaLivroRomance(romToSave);
 
             if (romanceAtu == null) {
                 int resp = JOptionPane.showConfirmDialog(null, "Livro não registrado, deseja registrar?", "Resultado", JOptionPane.YES_NO_CANCEL_OPTION);
@@ -634,11 +603,12 @@ public class CadRomance extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Livro alterado com sucesso!", "Alteração OK", 1);
 
             }
-
+            
         } else {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Erro!", JOptionPane.ERROR_MESSAGE);
         }
 
+         
     }
 
     public void recordLivro(Romance a) {

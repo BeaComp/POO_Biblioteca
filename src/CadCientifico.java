@@ -394,7 +394,6 @@ public class CadCientifico extends javax.swing.JFrame {
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
 
        cadastrarCientifico();
-       clean();
        listaTab();
      
     }//GEN-LAST:event_btSalvarActionPerformed
@@ -438,80 +437,92 @@ public class CadCientifico extends javax.swing.JFrame {
         lbTaxa.setText(String.format("R$ %.2f", taxa));
     }
     
-//     public void abreRelGerLivro(){
-//        RelGeral.getRelGeral(bdromance).setVisible(true);
-//    } ;
+ ;
+    
+    public Cientificos registInformations(Cientificos cient) {
+
+        cient.setNome(cxNome.getText());
+        cient.setSecao(cxSecao.getText());
+
+        cient.getCaracteristicas().setPublicacao(cxPublicacao.getText());
+        cient.getCaracteristicas().setAutor(cxAutor.getText());
+        cient.getCaracteristicas().setEditora(cxEditora.getText());
+      
+        cient.setGrau_academico(cxGrau.getText());
+        cient.setEstudos(cxEstudo.getText());
+
+        try {
+            cient.setCodigo(Integer.parseInt(cxCodigo.getText()));
+        } catch (CodigoException e) {
+            e.limCodigo();
+            cxCodigo.setText("");
+            cxCodigo.requestFocus();
+            return null;
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "O código deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+
+        try {
+            cient.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
+        } catch (PrateleiraException nfe) {
+            nfe.limPrateleira();
+            cxPrateleira.setText("");
+            cxPrateleira.requestFocus();
+            JOptionPane.showMessageDialog(null, "Há somente 10 prateleiras!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "A prateleira deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+
+       
+
+        try {
+            cient.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
+        } catch (NumberFormatException nfe) {
+            cxPaginas.setText("");
+            cxPaginas.requestFocus();
+            JOptionPane.showMessageDialog(null, "A página deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+
+        try {
+            cient.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
+        } catch (NumberFormatException nfe) {
+            cxCapitulos.setText("");
+            cxCapitulos.requestFocus();
+            JOptionPane.showMessageDialog(null, "A página deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+
+        try {
+            cient.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
+        } catch (NumberFormatException nfe) {
+            cxEdicao.setText("");
+            cxEdicao.requestFocus();
+            JOptionPane.showMessageDialog(null, "A página deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+
+       
+
+        return cient;
+
+    }
+
     
     public void cadastrarCientifico() {
         if (verifyLivro()) {
             cientifico = new Cientificos();
+            Cientificos cientToSave = registInformations(cientifico);
             
-            try{
-                cientifico.setCodigo(Integer.parseInt(cxCodigo.getText()));
-            } catch (CodigoException e) {
-                int x = e.codigo;
-                String y = String.valueOf(x);
-                
-                if (y.length() > 5) {
-                    e.limCodigo();
-                    cxCodigo.setText("");
-                    cxCodigo.requestFocus();
-                }
-                
-                JOptionPane.showMessageDialog(null, "O código deve ser menor que 5 caracteres!", "Erro!", JOptionPane.ERROR_MESSAGE);
-                
-                
-            } catch (NumberFormatException nfe){
-                JOptionPane.showMessageDialog(null, "O código deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
-            }
-            
-           
-        
-            try{
-                cientifico.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
-            } catch(PrateleiraException nfe){
-                    cxPrateleira.setText("");
-                    cxPrateleira.requestFocus();
-                JOptionPane.showMessageDialog(null, "Há somente 10 prateleiras!", "Erro!", JOptionPane.ERROR_MESSAGE);
-            } catch (NumberFormatException nfe){
-                JOptionPane.showMessageDialog(null, "A prateleira deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
-            }
-            
-            try{
-                cientifico.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
-            }  catch (NumberFormatException nfe){
-                JOptionPane.showMessageDialog(null, "A página deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
-            }
-            
-            try{
-                cientifico.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
-            }  catch (NumberFormatException nfe){
-                JOptionPane.showMessageDialog(null, "A página deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
-            }
-            
-            try{
-                cientifico.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
-            }  catch (NumberFormatException nfe){
-                JOptionPane.showMessageDialog(null, "A página deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
-            }
-            
-                cientifico.setNome(cxNome.getText());
-                cientifico.setSecao(cxSecao.getText());
-               
-                cientifico.getCaracteristicas().setPublicacao(cxPublicacao.getText());
-                cientifico.getCaracteristicas().setAutor(cxAutor.getText());
-                cientifico.getCaracteristicas().setEditora(cxEditora.getText());
-                
-                
-                cientifico.setGrau_academico(cxGrau.getText());
-                cientifico.setEstudos(cxEstudo.getText());
-               
-                recordLivro(cientifico);
-               
+            if(cientToSave != null)
+                recordLivro(cientToSave);
+
         } else {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Erro!", JOptionPane.ERROR_MESSAGE);
         }
-
     }
    
     public void excluir() {
@@ -555,57 +566,24 @@ public class CadCientifico extends javax.swing.JFrame {
     public void alterar() {
         if (verifyLivro()) {
             cientifico = new Cientificos();
+            Cientificos cientToSave = registInformations(cientifico);
             
-            try{
-                cientifico.setCodigo(Integer.parseInt(cxCodigo.getText()));
-            } catch (CodigoException e) {
-                int x = e.codigo;
-                String y = String.valueOf(x);
-                
-                JOptionPane.showMessageDialog(null, "O código deve ser menor que 5 caracteres!", "Erro!", JOptionPane.ERROR_MESSAGE);
-                
-                if (y.length() > 5) {
-                    e.limCodigo();
-                    cxCodigo.setText("");
-                    cxCodigo.requestFocus();
+            if(cientToSave != null)
+                recordLivro(cientToSave);
+            
+            
+            Cientificos cientAtu = bdCientifico.atualizaLivroCientifico(cientToSave);
+
+            if (cientAtu == null) {
+                int resp = JOptionPane.showConfirmDialog(null, "Livro não registrado, deseja registrar?", "Resultado", JOptionPane.YES_NO_CANCEL_OPTION);
+                if (resp == 0) {
+                    recordLivro(cientifico);
                 }
-            } 
-   
-        
-            try{
-                cientifico.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
-            } catch(PrateleiraException nfe){
-                JOptionPane.showMessageDialog(null, "Há somente 10 prateleiras!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Livro alterado com sucesso!", "Alteração OK", 1);
+
             }
             
-
-                cientifico.setNome(cxNome.getText());
-                cientifico.setSecao(cxSecao.getText());
-               
-                cientifico.getCaracteristicas().setPublicacao(cxPublicacao.getText());
-                cientifico.getCaracteristicas().setAutor(cxAutor.getText());
-                cientifico.getCaracteristicas().setEditora(cxEditora.getText());
-                cientifico.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
-                cientifico.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
-                cientifico.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
-                
-                cientifico.setGrau_academico(cxGrau.getText());
-                cientifico.setEstudos(cxEstudo.getText());
-
-                Cientificos cientAtu = bdCientifico.atualizaLivroCientifico(cientifico);
-
-                if (cientAtu == null) {
-                    int resp = JOptionPane.showConfirmDialog(null, "Livro não registrado, deseja registrar?", "Resultado", JOptionPane.YES_NO_CANCEL_OPTION);
-                    if (resp == 0) {
-                        recordLivro(cientifico);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Livro alterado com sucesso!", "Alteração OK", 1);
-                    
-                }
-
-            
-
         } else {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Erro!", JOptionPane.ERROR_MESSAGE);
         }

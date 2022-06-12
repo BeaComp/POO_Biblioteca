@@ -1,19 +1,9 @@
 
+//Beatriz Cristina de Faria RA: 2349710
+//POO - C31
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author Beatriz
- */
-
-
-
 
 
 
@@ -427,7 +417,6 @@ public class CadHQ extends javax.swing.JFrame {
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
 
        cadastrarHQ();
-       clean();
        listaTab();
      
     }//GEN-LAST:event_btSalvarActionPerformed
@@ -473,61 +462,92 @@ public class CadHQ extends javax.swing.JFrame {
     }
     
     
+     public HQ registInformations(HQ hqregistro) {
+
+        hqregistro.setNome(cxNome.getText());
+        hqregistro.setSecao(cxSecao.getText());
+
+        hqregistro.getCaracteristicas().setPublicacao(cxPublicacao.getText());
+        hqregistro.getCaracteristicas().setAutor(cxAutor.getText());
+        hqregistro.getCaracteristicas().setEditora(cxEditora.getText());
+      
+        
+        hqregistro.setIlustrador(cxIlustrador.getText());
+        hqregistro.setFranquia(cxFranquia.getText());
+        hqregistro.setCor(cbCor.isSelected());
+        
+        try {
+            hqregistro.setCodigo(Integer.parseInt(cxCodigo.getText()));
+        } catch (CodigoException e) {
+            e.limCodigo();
+            cxCodigo.setText("");
+            cxCodigo.requestFocus();
+            return null;
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "O código deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+
+        try {
+            hqregistro.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
+        } catch (PrateleiraException nfe) {
+            nfe.limPrateleira();
+            cxPrateleira.setText("");
+            cxPrateleira.requestFocus();
+            JOptionPane.showMessageDialog(null, "Há somente 10 prateleiras!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "A prateleira deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+
+       
+
+        try {
+              hqregistro.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
+        } catch (NumberFormatException nfe) {
+            cxPaginas.setText("");
+            cxPaginas.requestFocus();
+            JOptionPane.showMessageDialog(null, "A página deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+
+        try {
+            hqregistro.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
+        } catch (NumberFormatException nfe) {
+            cxCapitulos.setText("");
+            cxCapitulos.requestFocus();
+            JOptionPane.showMessageDialog(null, "A página deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+
+        try {
+            hqregistro.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
+        } catch (NumberFormatException nfe) {
+            cxEdicao.setText("");
+            cxEdicao.requestFocus();
+            JOptionPane.showMessageDialog(null, "A página deve ser um inteiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+
+       
+
+        return hqregistro;
+
+    }
     
-//     public void abreRelGerLivro(){
-//        RelGeral.getRelGeral(bdromance).setVisible(true);
-//    } ;
-    
+
     public void cadastrarHQ() {
-        if (verifyLivro()) {
+         if (verifyLivro()) {
             hq = new HQ();
-          
-
-            try{
-                hq.setCodigo(Integer.parseInt(cxCodigo.getText()));
-            } catch (CodigoException e) {
-                int x = e.codigo;
-                String y = String.valueOf(x);
-                
-                JOptionPane.showMessageDialog(null, "O código deve ser menor que 5 caracteres!", "Erro!", JOptionPane.ERROR_MESSAGE);
-                
-                if (y.length() > 5) {
-                    e.limCodigo();
-                    cxCodigo.setText("");
-                    cxCodigo.requestFocus();
-                }
-            } 
-               
-            try{
-                hq.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
-            } catch(PrateleiraException nfe){
-                JOptionPane.showMessageDialog(null, "Há somente 10 prateleiras!", "Erro!", JOptionPane.ERROR_MESSAGE);
-            }
+            HQ hqToSave = registInformations(hq);
             
-            
-                hq.setNome(cxNome.getText());
-                hq.setSecao(cxSecao.getText());
-
-
-                hq.getCaracteristicas().setPublicacao(cxPublicacao.getText());
-                hq.getCaracteristicas().setAutor(cxAutor.getText());
-                hq.getCaracteristicas().setEditora(cxEditora.getText());
-                hq.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
-                hq.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
-                hq.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
-                
-                hq.setIlustrador(cxIlustrador.getText());
-                hq.setFranquia(cxFranquia.getText());
-                hq.setCor(cbCor.isSelected());
-
-                recordLivro(hq);
-                
-            
+            if(hqToSave != null)
+                recordLivro(hqToSave);
 
         } else {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Erro!", JOptionPane.ERROR_MESSAGE);
         }
-
     }
    
     public void excluir() {
@@ -571,73 +591,26 @@ public class CadHQ extends javax.swing.JFrame {
     public void alterar() {
         if (verifyLivro()) {
             hq = new HQ();
-           
+            HQ hqToSave = registInformations(hq);
+            
+            if(hqToSave != null)
+                recordLivro(hqToSave);
+            
+            
+            HQ hqAtu = bdhq.atualizaLivroHQ(hqToSave);
 
-                
-                try{
-                hq.setCodigo(Integer.parseInt(cxCodigo.getText()));
-            } catch (CodigoException e) {
-                int x = e.codigo;
-                String y = String.valueOf(x);
-                
-                JOptionPane.showMessageDialog(null, "O código deve ser menor que 5 caracteres!", "Erro!", JOptionPane.ERROR_MESSAGE);
-                
-                if (y.length() > 5) {
-                    e.limCodigo();
-                    cxCodigo.setText("");
-                    cxCodigo.requestFocus();
+            if (hqAtu == null) {
+                int resp = JOptionPane.showConfirmDialog(null, "Livro não registrado, deseja registrar?", "Resultado", JOptionPane.YES_NO_CANCEL_OPTION);
+                if (resp == 0) {
+                    recordLivro(hq);
                 }
-            } 
-               
-            try{
-                hq.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
-            } catch(PrateleiraException nfe){
-                JOptionPane.showMessageDialog(null, "Há somente 10 prateleiras!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Livro alterado com sucesso!", "Alteração OK", 1);
+
             }
             
-            
-                hq.setNome(cxNome.getText());
-                hq.setSecao(cxSecao.getText());
-
-
-                hq.getCaracteristicas().setPublicacao(cxPublicacao.getText());
-                hq.getCaracteristicas().setAutor(cxAutor.getText());
-                hq.getCaracteristicas().setEditora(cxEditora.getText());
-                hq.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
-                hq.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
-                hq.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
-                
-                hq.setIlustrador(cxIlustrador.getText());
-                hq.setFranquia(cxFranquia.getText());
-                hq.setCor(cbCor.isSelected());
-
-                HQ hqAtu = bdhq.atualizaLivroHQ(hq);
-
-                if (hqAtu == null) {
-                    int resp = JOptionPane.showConfirmDialog(null, "Livro não registrado, deseja registrar?", "Resultado", JOptionPane.YES_NO_CANCEL_OPTION);
-                    if (resp == 0) {
-                        recordLivro(hq);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Livro alterado com sucesso!", "Alteração OK", 1);
-                    
-                }
-
-          
-
         } else {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Erro!", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-    
-    public void recordLivro(HQ a) {
-
-       hq = bdhq.cadHQ(a);
-        if (hq != null) {
-            JOptionPane.showMessageDialog(null, "Livro cadastrado com sucesso!", "Cadastro OK", 1);
-            clean();
-        } else {
-            JOptionPane.showMessageDialog(null, "Livro ja cadastrado!", "Erro no cadastro", 1);
         }
        
     }
@@ -695,6 +668,17 @@ public class CadHQ extends javax.swing.JFrame {
 
     }
 
+    public void recordLivro(HQ a) {
+
+        hq = bdhq.cadHQ(a);
+        if (hq != null) {
+            JOptionPane.showMessageDialog(null, "Livro cadastrado com sucesso!", "Cadastro OK", 1);
+            clean();
+        } else {
+            JOptionPane.showMessageDialog(null, "Livro ja cadastrado!", "Erro no cadastro", 1);
+        }
+
+    }
     
     public void clean() {
         cxCodigo.setText("");

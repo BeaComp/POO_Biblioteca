@@ -6,15 +6,10 @@ import javax.swing.JOptionPane;
 
 public class PrateleiraException extends Exception{
     
-    public Integer prateleira = 0;
-    
-    public PrateleiraException() {
-
-    }
     
     public void limPrateleira(){
-        if(prateleira > 10){
+                        
              JOptionPane.showMessageDialog(null, "Ha somente 10 prateleiras.", "Erro!", JOptionPane.ERROR_MESSAGE);
-        }
+           
     }
 }
