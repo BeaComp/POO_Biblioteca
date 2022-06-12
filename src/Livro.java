@@ -8,7 +8,7 @@ public class Livro {
     
     private String nome;
     private Integer codigo;
-    private int prateleira;
+    private Integer prateleira;
     private String secao;
     private Caracteristicas caracteristicas = new Caracteristicas();
 
@@ -51,7 +51,7 @@ public class Livro {
         return codigo;
     }
     
-    public void setPrateleira(int prateleira) throws PrateleiraException {
+    public void setPrateleira(Integer prateleira) throws PrateleiraException {
         if(prateleira <= 10){
             this.prateleira = prateleira;
         } else{

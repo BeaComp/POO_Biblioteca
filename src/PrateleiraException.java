@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 public class PrateleiraException extends Exception{
     
-    public int prateleira = 0;
+    public Integer prateleira = 0;
     
     public PrateleiraException() {
 

@@ -3,11 +3,11 @@
 
 public class Romance extends Livro implements LivroEditora {
     private int personagens;
-    private int narrador;
+    private Integer narrador;
     private String tipo_romance;
 
    
-    public void setNarrador(int narrador) throws NarradorException{
+    public void setNarrador(Integer narrador) throws NarradorException{
         if(narrador >= 1 && narrador <=3){
             this.narrador = narrador;
         }else{

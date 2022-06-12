@@ -398,40 +398,49 @@ public class CadDidatico extends javax.swing.JFrame {
     public void cadastrarDidatico() {
         if (verifyLivro()) {
             didatico = new Didatico();
-            Livro livro = new Livro();
+           
 
-            try {
+            try{
+                didatico.setCodigo(Integer.parseInt(cxCodigo.getText()));
+            } catch (CodigoException e) {
+                int x = e.codigo;
+                String y = String.valueOf(x);
+                
+                JOptionPane.showMessageDialog(null, "O código deve ser menor que 5 caracteres!", "Erro!", JOptionPane.ERROR_MESSAGE);
+                
+                if (y.length() > 5) {
+                    e.limCodigo();
+                    cxCodigo.setText("");
+                    cxCodigo.requestFocus();
+                }
+            } 
+   
+        
+            try{
+                didatico.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
+            } catch(PrateleiraException nfe){
+                JOptionPane.showMessageDialog(null, "Há somente 10 prateleiras!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            }
+            
 
-                livro.setNome(cxNome.getText());
-                livro.setSecao(cxSecao.getText());
-                livro.setCodigo(Integer.parseInt(cxCodigo.getText()));
-                livro.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
+                didatico.setNome(cxNome.getText());
+                didatico.setSecao(cxSecao.getText());
+                
 
 
-                livro.getCaracteristicas().setPublicacao(cxPublicacao.getText());
-                livro.getCaracteristicas().setAutor(cxAutor.getText());
-                livro.getCaracteristicas().setEditora(cxEditora.getText());
-                livro.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
-                livro.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
-                livro.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
+                didatico.getCaracteristicas().setPublicacao(cxPublicacao.getText());
+                didatico.getCaracteristicas().setAutor(cxAutor.getText());
+                didatico.getCaracteristicas().setEditora(cxEditora.getText());
+                didatico.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
+                didatico.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
+                didatico.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
                 
                 didatico.setArea(cxArea.getText());
                 didatico.setDisciplina(cxDisciplina.getText());
                
                 recordLivro(didatico);
                 
-            } catch (CodigoException e) {
-                int x = e.codigo;
-                String y = String.valueOf(x);;
-                
-                 if (y.length() > 5) {
-                    e.limCodigo();
-                    cxCodigo.setText("");
-                    cxCodigo.requestFocus();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Valores incondizentes com o tipo do campo!", "Erro!", JOptionPane.ERROR_MESSAGE);
-            }
+            
 
         } else {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Erro!", JOptionPane.ERROR_MESSAGE);
@@ -458,7 +467,7 @@ public class CadDidatico extends javax.swing.JFrame {
            
             
 
-            int resp = JOptionPane.showConfirmDialog(null, "Deseja excluir este Motor?", "Exclusão", JOptionPane.YES_NO_CANCEL_OPTION);
+            int resp = JOptionPane.showConfirmDialog(null, "Deseja excluir este Livro?", "Exclusão", JOptionPane.YES_NO_CANCEL_OPTION);
             if (resp == 0) {
                 did = bdDidatico.removeDidatico(did);
                 if (did == null) {
@@ -480,20 +489,42 @@ public class CadDidatico extends javax.swing.JFrame {
     public void alterar() {
         if (verifyLivro()) {
             didatico = new Didatico();
-            Livro livro = new Livro();
+            
 
-            try {
-                livro.setNome(cxNome.getText());
-                livro.setSecao(cxSecao.getText());
-                livro.setCodigo(Integer.parseInt(cxCodigo.getText()));
-                livro.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
+            try{
+                didatico.setCodigo(Integer.parseInt(cxCodigo.getText()));
+            } catch (CodigoException e) {
+                int x = e.codigo;
+                String y = String.valueOf(x);
                 
-                livro.getCaracteristicas().setPublicacao(cxPublicacao.getText());
-                livro.getCaracteristicas().setAutor(cxAutor.getText());
-                livro.getCaracteristicas().setEditora(cxEditora.getText());
-                livro.getCaracteristicas().setPaginas(Integer.parseInt(cxPublicacao.getText()));
-                livro.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
-                livro.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
+                JOptionPane.showMessageDialog(null, "O código deve ser menor que 5 caracteres!", "Erro!", JOptionPane.ERROR_MESSAGE);
+                
+                if (y.length() > 5) {
+                    e.limCodigo();
+                    cxCodigo.setText("");
+                    cxCodigo.requestFocus();
+                }
+            } 
+   
+        
+            try{
+                didatico.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
+            } catch(PrateleiraException nfe){
+                JOptionPane.showMessageDialog(null, "Há somente 10 prateleiras!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            }
+            
+
+                didatico.setNome(cxNome.getText());
+                didatico.setSecao(cxSecao.getText());
+                
+
+
+                didatico.getCaracteristicas().setPublicacao(cxPublicacao.getText());
+                didatico.getCaracteristicas().setAutor(cxAutor.getText());
+                didatico.getCaracteristicas().setEditora(cxEditora.getText());
+                didatico.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
+                didatico.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
+                didatico.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
                 
                 didatico.setArea(cxArea.getText());
                 didatico.setDisciplina(cxDisciplina.getText());
@@ -511,18 +542,7 @@ public class CadDidatico extends javax.swing.JFrame {
                     
                 }
 
-            } catch (CodigoException e) {
-                int x = e.codigo;
-                String y = String.valueOf(x);;
-                
-                 if (y.length() > 5) {
-                    e.limCodigo();
-                    cxCodigo.setText("");
-                    cxCodigo.requestFocus();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "O código deve ser menor que 5 caracteres!", "Erro!", JOptionPane.ERROR_MESSAGE);
-            }
+           
 
         } else {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Erro!", JOptionPane.ERROR_MESSAGE);

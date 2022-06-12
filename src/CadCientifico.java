@@ -398,41 +398,45 @@ public class CadCientifico extends javax.swing.JFrame {
     public void cadastrarCientifico() {
         if (verifyLivro()) {
             cientifico = new Cientificos();
-            Livro livro = new Livro();
+            
+            try{
+                cientifico.setCodigo(Integer.parseInt(cxCodigo.getText()));
+            } catch (CodigoException e) {
+                int x = e.codigo;
+                String y = String.valueOf(x);
+                
+                JOptionPane.showMessageDialog(null, "O código deve ser menor que 5 caracteres!", "Erro!", JOptionPane.ERROR_MESSAGE);
+                
+                if (y.length() > 5) {
+                    e.limCodigo();
+                    cxCodigo.setText("");
+                    cxCodigo.requestFocus();
+                }
+            } 
+   
+        
+            try{
+                cientifico.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
+            } catch(PrateleiraException nfe){
+                JOptionPane.showMessageDialog(null, "Há somente 10 prateleiras!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            }
+            
 
-            try {
-
-                livro.setNome(cxNome.getText());
-                livro.setSecao(cxSecao.getText());
-                livro.setCodigo(Integer.parseInt(cxCodigo.getText()));
-                livro.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
-
-
-                livro.getCaracteristicas().setPublicacao(cxPublicacao.getText());
-                livro.getCaracteristicas().setAutor(cxAutor.getText());
-                livro.getCaracteristicas().setEditora(cxEditora.getText());
-                livro.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
-                livro.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
-                livro.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
+                cientifico.setNome(cxNome.getText());
+                cientifico.setSecao(cxSecao.getText());
+               
+                cientifico.getCaracteristicas().setPublicacao(cxPublicacao.getText());
+                cientifico.getCaracteristicas().setAutor(cxAutor.getText());
+                cientifico.getCaracteristicas().setEditora(cxEditora.getText());
+                cientifico.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
+                cientifico.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
+                cientifico.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
                 
                 cientifico.setGrau_academico(cxGrau.getText());
                 cientifico.setEstudos(cxEstudo.getText());
                
                 recordLivro(cientifico);
-                
-            } catch (CodigoException e) {
-                int x = e.codigo;
-                String y = String.valueOf(x);;
-                
-                 if (y.length() > 5) {
-                    e.limCodigo();
-                    cxCodigo.setText("");
-                    cxCodigo.requestFocus();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Valores incondizentes com o tipo do campo!", "Erro!", JOptionPane.ERROR_MESSAGE);
-            }
-
+               
         } else {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Erro!", JOptionPane.ERROR_MESSAGE);
         }
@@ -458,7 +462,7 @@ public class CadCientifico extends javax.swing.JFrame {
            
             
 
-            int resp = JOptionPane.showConfirmDialog(null, "Deseja excluir este Motor?", "Exclusão", JOptionPane.YES_NO_CANCEL_OPTION);
+            int resp = JOptionPane.showConfirmDialog(null, "Deseja excluir este Livro?", "Exclusão", JOptionPane.YES_NO_CANCEL_OPTION);
             if (resp == 0) {
                 cient = bdCientifico.removeCientificos(cient);
                 if (cient == null) {
@@ -480,25 +484,42 @@ public class CadCientifico extends javax.swing.JFrame {
     public void alterar() {
         if (verifyLivro()) {
             cientifico = new Cientificos();
-            Livro livro = new Livro();
-
-            try {
-                livro.setNome(cxNome.getText());
-                livro.setSecao(cxSecao.getText());
-                livro.setCodigo(Integer.parseInt(cxCodigo.getText()));
-                livro.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
+            
+            try{
+                cientifico.setCodigo(Integer.parseInt(cxCodigo.getText()));
+            } catch (CodigoException e) {
+                int x = e.codigo;
+                String y = String.valueOf(x);
                 
-                livro.getCaracteristicas().setPublicacao(cxPublicacao.getText());
-                livro.getCaracteristicas().setAutor(cxAutor.getText());
-                livro.getCaracteristicas().setEditora(cxEditora.getText());
-                livro.getCaracteristicas().setPaginas(Integer.parseInt(cxPublicacao.getText()));
-                livro.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
-                livro.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
+                JOptionPane.showMessageDialog(null, "O código deve ser menor que 5 caracteres!", "Erro!", JOptionPane.ERROR_MESSAGE);
+                
+                if (y.length() > 5) {
+                    e.limCodigo();
+                    cxCodigo.setText("");
+                    cxCodigo.requestFocus();
+                }
+            } 
+   
+        
+            try{
+                cientifico.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
+            } catch(PrateleiraException nfe){
+                JOptionPane.showMessageDialog(null, "Há somente 10 prateleiras!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            }
+            
+
+                cientifico.setNome(cxNome.getText());
+                cientifico.setSecao(cxSecao.getText());
+               
+                cientifico.getCaracteristicas().setPublicacao(cxPublicacao.getText());
+                cientifico.getCaracteristicas().setAutor(cxAutor.getText());
+                cientifico.getCaracteristicas().setEditora(cxEditora.getText());
+                cientifico.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
+                cientifico.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
+                cientifico.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
                 
                 cientifico.setGrau_academico(cxGrau.getText());
                 cientifico.setEstudos(cxEstudo.getText());
-               
-               
 
                 Cientificos cientAtu = bdCientifico.atualizaLivroCientifico(cientifico);
 
@@ -512,18 +533,7 @@ public class CadCientifico extends javax.swing.JFrame {
                     
                 }
 
-            } catch (CodigoException e) {
-                int x = e.codigo;
-                String y = String.valueOf(x);;
-                
-                 if (y.length() > 5) {
-                    e.limCodigo();
-                    cxCodigo.setText("");
-                    cxCodigo.requestFocus();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "O código deve ser menor que 5 caracteres!", "Erro!", JOptionPane.ERROR_MESSAGE);
-            }
+            
 
         } else {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Erro!", JOptionPane.ERROR_MESSAGE);

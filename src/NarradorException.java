@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 
 public class NarradorException extends Exception{
     
-    public int narrador = 0;
+    public Integer narrador = 0;
     
     public NarradorException() {
 
