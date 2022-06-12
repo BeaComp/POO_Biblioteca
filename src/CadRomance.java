@@ -2,16 +2,15 @@
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 public class CadRomance extends javax.swing.JFrame {
 
     private Romance romance;
     private BdRomance bdromance = new BdRomance();
-    
+
     private static CadRomance cadRomance;
 
     private CadRomance() {
-       
+
         initComponents();
     }
 
@@ -22,7 +21,7 @@ public class CadRomance extends javax.swing.JFrame {
 
         return cadRomance;
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -69,6 +68,7 @@ public class CadRomance extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lbTaxa = new javax.swing.JLabel();
+        btnTaxes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -194,6 +194,13 @@ public class CadRomance extends javax.swing.JFrame {
 
         lbTaxa.setText("R$ 0,00");
 
+        btnTaxes.setText("Calcular Taxa");
+        btnTaxes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaxesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -287,7 +294,9 @@ public class CadRomance extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addGap(29, 29, 29)
                                 .addComponent(lbTaxa)
-                                .addGap(169, 169, 169))))))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnTaxes)
+                                .addGap(102, 102, 102))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -359,10 +368,11 @@ public class CadRomance extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btConsultar)
-                        .addGap(150, 150, 150)
+                        .addGap(146, 146, 146)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(lbTaxa))))
+                            .addComponent(lbTaxa)
+                            .addComponent(btnTaxes))))
                 .addGap(0, 36, Short.MAX_VALUE))
         );
 
@@ -392,14 +402,14 @@ public class CadRomance extends javax.swing.JFrame {
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
 
-       cadastrarRomance();
-       clean();
-       listaTab();
-     
+        cadastrarRomance();
+        clean();
+        listaTab();
+
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btRelGeralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRelGeralActionPerformed
-        
+
     }//GEN-LAST:event_btRelGeralActionPerformed
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
@@ -411,79 +421,83 @@ public class CadRomance extends javax.swing.JFrame {
     }//GEN-LAST:event_tabLivroMouseClicked
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
-       excluir();
-       clean();
-       listaTab();
+        excluir();
+        clean();
+        listaTab();
     }//GEN-LAST:event_btExcluirActionPerformed
-    
-    
-    
+
+    private void btnTaxesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaxesActionPerformed
+       if(cxPaginas.getText().equals(""))
+           JOptionPane.showMessageDialog(null, "Inserir numero de paginas!", "Erro!", JOptionPane.ERROR_MESSAGE);
+       else{
+           int pages = Integer.parseInt(cxPaginas.getText());
+           calctaxa(pages);  
+       }
+              // TODO add your handling code here:
+    }//GEN-LAST:event_btnTaxesActionPerformed
+
 //     public void abreRelGerLivro(){
 //        RelGeral.getRelGeral(bdromance).setVisible(true);
 //    } ;
-    
-    
-    
-    
-    
+    public void calctaxa(int fee) {
+        Romance rom = new Romance();
+        double taxa = rom.calcTaxaEditora(fee);
+
+        lbTaxa.setText(String.format("R$ %.2f", taxa));
+    }
+
     public void cadastrarRomance() {
         if (verifyLivro()) {
             romance = new Romance();
-            
-            try{
+
+            try {
                 romance.setCodigo(Integer.parseInt(cxCodigo.getText()));
             } catch (CodigoException e) {
                 int x = e.codigo;
                 String y = String.valueOf(x);
-                
+
                 JOptionPane.showMessageDialog(null, "O código deve ser menor que 5 caracteres!", "Erro!", JOptionPane.ERROR_MESSAGE);
-                
+
                 if (y.length() > 5) {
                     e.limCodigo();
                     cxCodigo.setText("");
                     cxCodigo.requestFocus();
                 }
-            } 
-   
-        
-            try{
+            }
+
+            try {
                 romance.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
-            } catch(PrateleiraException nfe){
+            } catch (PrateleiraException nfe) {
                 JOptionPane.showMessageDialog(null, "Há somente 10 prateleiras!", "Erro!", JOptionPane.ERROR_MESSAGE);
             }
-            
-             
-            try{
+
+            try {
                 romance.setNarrador(Integer.parseInt(cxNarrador.getText()));
-            } catch (NarradorException nfe){
+            } catch (NarradorException nfe) {
                 JOptionPane.showMessageDialog(null, "O narrador deve ser de 1 (primeira) ou 3 (terceira) pessoa!", "Erro!", JOptionPane.ERROR_MESSAGE);
             }
-            
-            
-                romance.setNome(cxNome.getText());
-                romance.setSecao(cxSecao.getText());
-               
 
+            romance.setNome(cxNome.getText());
+            romance.setSecao(cxSecao.getText());
 
-                romance.getCaracteristicas().setPublicacao(cxPublicacao.getText());
-                romance.getCaracteristicas().setAutor(cxAutor.getText());
-                romance.getCaracteristicas().setEditora(cxEditora.getText());
-                romance.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
-                romance.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
-                romance.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
-                
-                romance.setPersonagens(Integer.parseInt(cxPersonagens.getText()));
-                romance.setTipo_romance(cxTipo.getText());
-                
+            romance.getCaracteristicas().setPublicacao(cxPublicacao.getText());
+            romance.getCaracteristicas().setAutor(cxAutor.getText());
+            romance.getCaracteristicas().setEditora(cxEditora.getText());
+            romance.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
+            romance.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
+            romance.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
 
-                recordLivro(romance);
-                
-            } else{
-                JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Erro!", JOptionPane.ERROR_MESSAGE);
-            }
+            romance.setPersonagens(Integer.parseInt(cxPersonagens.getText()));
+            romance.setTipo_romance(cxTipo.getText());
+
+            recordLivro(romance);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
 
     }
-   
+
     public void excluir() {
         Romance rom = bdromance.verifyLivro(cxNome.getText());
 
@@ -501,7 +515,6 @@ public class CadRomance extends javax.swing.JFrame {
             cxPersonagens.setText(Integer.toString(rom.getPersonagens()));
             cxTipo.setText(rom.getTipo_romance());
             cxNarrador.setText(Integer.toString(rom.getNarrador()));
-            
 
             int resp = JOptionPane.showConfirmDialog(null, "Deseja excluir este Livro?", "Exclusão", JOptionPane.YES_NO_CANCEL_OPTION);
             if (resp == 0) {
@@ -520,126 +533,116 @@ public class CadRomance extends javax.swing.JFrame {
         }
 
     }
-  
 
     public void alterar() {
-       if (verifyLivro()) {
+        if (verifyLivro()) {
             romance = new Romance();
-            
-            try{
+
+            try {
                 romance.setCodigo(Integer.parseInt(cxCodigo.getText()));
             } catch (CodigoException e) {
                 int x = e.codigo;
                 String y = String.valueOf(x);
-                
+
                 JOptionPane.showMessageDialog(null, "O código deve ser menor que 5 caracteres!", "Erro!", JOptionPane.ERROR_MESSAGE);
-                
+
                 if (y.length() > 5) {
                     e.limCodigo();
                     cxCodigo.setText("");
                     cxCodigo.requestFocus();
                 }
-            } 
-   
-        
-            try{
+            }
+
+            try {
                 romance.setPrateleira(Integer.parseInt(cxPrateleira.getText()));
-            } catch(PrateleiraException nfe){
+            } catch (PrateleiraException nfe) {
                 JOptionPane.showMessageDialog(null, "Há somente 10 prateleiras!", "Erro!", JOptionPane.ERROR_MESSAGE);
             }
-            
-             
-            try{
+
+            try {
                 romance.setNarrador(Integer.parseInt(cxNarrador.getText()));
-            } catch (NarradorException nfe){
+            } catch (NarradorException nfe) {
                 JOptionPane.showMessageDialog(null, "O narrador deve ser de 1 (primeira) ou 3 (terceira) pessoa!", "Erro!", JOptionPane.ERROR_MESSAGE);
             }
-            
-            
-                romance.setNome(cxNome.getText());
-                romance.setSecao(cxSecao.getText());
-               
 
+            romance.setNome(cxNome.getText());
+            romance.setSecao(cxSecao.getText());
 
-                romance.getCaracteristicas().setPublicacao(cxPublicacao.getText());
-                romance.getCaracteristicas().setAutor(cxAutor.getText());
-                romance.getCaracteristicas().setEditora(cxEditora.getText());
-                romance.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
-                romance.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
-                romance.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
-                
-                romance.setPersonagens(Integer.parseInt(cxPersonagens.getText()));
-                romance.setTipo_romance(cxTipo.getText());
-                
-                Romance romanceAtu = bdromance.atualizaLivroRomance(romance);
+            romance.getCaracteristicas().setPublicacao(cxPublicacao.getText());
+            romance.getCaracteristicas().setAutor(cxAutor.getText());
+            romance.getCaracteristicas().setEditora(cxEditora.getText());
+            romance.getCaracteristicas().setPaginas(Integer.parseInt(cxPaginas.getText()));
+            romance.getCaracteristicas().setCapitulos(Integer.parseInt(cxCapitulos.getText()));
+            romance.getCaracteristicas().setEdicao(Integer.parseInt(cxEdicao.getText()));
 
-                if (romanceAtu == null) {
-                    int resp = JOptionPane.showConfirmDialog(null, "Livro não registrado, deseja registrar?", "Resultado", JOptionPane.YES_NO_CANCEL_OPTION);
-                    if (resp == 0) {
-                        recordLivro(romance);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Livro alterado com sucesso!", "Alteração OK", 1);
-                    
+            romance.setPersonagens(Integer.parseInt(cxPersonagens.getText()));
+            romance.setTipo_romance(cxTipo.getText());
+
+            Romance romanceAtu = bdromance.atualizaLivroRomance(romance);
+
+            if (romanceAtu == null) {
+                int resp = JOptionPane.showConfirmDialog(null, "Livro não registrado, deseja registrar?", "Resultado", JOptionPane.YES_NO_CANCEL_OPTION);
+                if (resp == 0) {
+                    recordLivro(romance);
                 }
-                
-                
-            } else{
-                JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Erro!", JOptionPane.ERROR_MESSAGE);
-            }
-                
+            } else {
+                JOptionPane.showMessageDialog(null, "Livro alterado com sucesso!", "Alteração OK", 1);
 
-            
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
-    
+
     public void recordLivro(Romance a) {
 
-       romance = bdromance.cadRomance(a);
+        romance = bdromance.cadRomance(a);
         if (romance != null) {
             JOptionPane.showMessageDialog(null, "Livro cadastrado com sucesso!", "Cadastro OK", 1);
             clean();
         } else {
             JOptionPane.showMessageDialog(null, "Livro ja cadastrado!", "Erro no cadastro", 1);
         }
-       
+
     }
-    
-     public void listaTab(){
-    
-        DefaultTableModel modelo = (DefaultTableModel)tabLivro.getModel();
+
+    public void listaTab() {
+
+        DefaultTableModel modelo = (DefaultTableModel) tabLivro.getModel();
         int posLin = 0;
         modelo.setRowCount(posLin);
-        
-        for(Romance livro : bdromance.getBdRomance()){
-            modelo.insertRow(posLin, new Object[]{livro.getNome(),livro.getCaracteristicas().getCapitulos(), livro.getCodigo(), 
+
+        for (Romance livro : bdromance.getBdRomance()) {
+            modelo.insertRow(posLin, new Object[]{livro.getNome(), livro.getCaracteristicas().getCapitulos(), livro.getCodigo(),
                 livro.getPrateleira(), livro.getSecao(), livro.getCaracteristicas().getPublicacao(), livro.getCaracteristicas().getAutor(),
                 livro.getCaracteristicas().getEdicao(), livro.getCaracteristicas().getEditora(), livro.getCaracteristicas().getPaginas(),
                 livro.getPersonagens(), livro.getTipo_romance(), livro.getNarrador()});
             posLin++;
         }
     }
-   
-    public void selectTab(){
+
+    public void selectTab() {
         String valLinTab = "";
         int posLin = tabLivro.getSelectedRow();
-       
-        for(int coluna = 0; coluna < tabLivro.getColumnCount(); coluna++){
+
+        for (int coluna = 0; coluna < tabLivro.getColumnCount(); coluna++) {
             valLinTab += tabLivro.getModel().getValueAt(posLin, coluna).toString();
-            
-            if(coluna+1 < tabLivro.getColumnCount()){
+
+            if (coluna + 1 < tabLivro.getColumnCount()) {
                 valLinTab += " - ";
             }
         }
         JOptionPane.showMessageDialog(
                 null,
-                "valor da Linha: "+valLinTab,
+                "valor da Linha: " + valLinTab,
                 "Seleção",
                 1
         );
-        
+
     }
-    
-    
+
     public boolean verifyLivro() {
         return !("".equals(cxNome.getText())
                 || "".equals(cxCodigo.getText())
@@ -657,7 +660,6 @@ public class CadRomance extends javax.swing.JFrame {
 
     }
 
-    
     public void clean() {
         cxCodigo.setText("");
         cxPrateleira.setText("");
@@ -674,7 +676,7 @@ public class CadRomance extends javax.swing.JFrame {
         cxNarrador.setText("");
         cxPersonagens.setText("");
     }
-    
+
     public void exit() {
         int resp = JOptionPane.showConfirmDialog(null, "Deseja Sair?", "Saida", JOptionPane.YES_NO_CANCEL_OPTION);
 
@@ -682,12 +684,11 @@ public class CadRomance extends javax.swing.JFrame {
             this.dispose();
         }
     }
-    
-    public void consultar(){
+
+    public void consultar() {
         Romance rom = bdromance.verifyLivro(cxNome.getText());
-        
-        
-         if(rom != null){
+
+        if (rom != null) {
             cxCodigo.setText(Integer.toString(rom.getCodigo()));
             cxPrateleira.setText(Integer.toString(rom.getPrateleira()));
             cxSecao.setText(rom.getSecao());
@@ -701,18 +702,17 @@ public class CadRomance extends javax.swing.JFrame {
             cxPersonagens.setText(Integer.toString(rom.getPersonagens()));
             cxTipo.setText(rom.getTipo_romance());
             cxNarrador.setText(Integer.toString(rom.getNarrador()));
-           
-        }
-        else{
-               JOptionPane.showMessageDialog(
-                   null,
-                   "Não existe livro com esse NOME!",
-                   "Erro na Consulta",
+
+        } else {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Não existe livro com esse NOME!",
+                    "Erro na Consulta",
                     0
-                );
+            );
         }
     }
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -756,6 +756,7 @@ public class CadRomance extends javax.swing.JFrame {
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSalvar;
     private javax.swing.JButton btVoltar;
+    private javax.swing.JButton btnTaxes;
     private javax.swing.JTextField cxAutor;
     private javax.swing.JTextField cxCapitulos;
     private javax.swing.JTextField cxCodigo;
@@ -792,5 +793,4 @@ public class CadRomance extends javax.swing.JFrame {
     private javax.swing.JTable tabLivro;
     // End of variables declaration//GEN-END:variables
 
-    }
-
+}

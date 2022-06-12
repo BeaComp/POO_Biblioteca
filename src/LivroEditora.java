@@ -1,7 +1,7 @@
 
 //Beatriz Cristina de Faria RA: 2349710
-//Engenharia de Computação C31
+//Engenharia de Computaï¿½ï¿½o C31
 
 public interface LivroEditora {
-     public void calcTaxaEditora();
+     public double calcTaxaEditora(int fee);
 }

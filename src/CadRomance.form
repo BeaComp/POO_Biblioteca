@@ -127,7 +127,9 @@
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                               <Component id="lbTaxa" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnTaxes" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -218,10 +220,11 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="btConsultar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbTaxa" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnTaxes" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -529,6 +532,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="R$ 0,00"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnTaxes">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Calcular Taxa"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTaxesActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
